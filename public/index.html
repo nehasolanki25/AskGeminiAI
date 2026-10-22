@@ -1,29 +1,179 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask Gemini AI</title>
+    <meta
+        name="description"
+        content="Ask Gemini AI questions and get helpful answers with a simple AI assistant."
+    >
+    <title>Ask Gemini AI — Your AI Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-       <h1>
-          <span class="emoji">🤖</span>
-          <span class="gradient-text">Ask Gemini AI</span>
-        </h1>
-        
-        <input
-            type="text"
-            id="question"
-            placeholder="Ask your question here..."
-        >
-        <button id="askBtn">
-            Ask Gemini
-        </button>
-        <div id="result">
-            Your answer will appear here...
-        </div>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <a href="/" class="brand">
+                <span class="brand-icon">✳</span>
+                <span>
+                    <strong>Gemini</strong>
+                    <small>AI ASSISTANT</small>
+                </span>
+            </a>
+
+            <button class="new-chat-btn" id="newChatBtn">
+                <span>＋</span> New conversation
+            </button>
+
+            <div class="sidebar-section">
+                <p class="sidebar-label">QUICK PROMPTS</p>
+                <button class="prompt-btn" data-prompt="Explain JavaScript in simple words with an example.">
+                    <span>⌘</span>
+                    Learn JavaScript
+                </button>
+
+                <button class="prompt-btn" data-prompt="Give me a beginner-friendly Python project idea with steps.">
+                    <span>⌁</span>
+                    Python project ideas
+                </button>
+
+                <button class="prompt-btn" data-prompt="Explain what an API is and how it works with a real-life example.">
+                    <span>↗</span>
+                    Understand APIs
+                </button>
+
+                <button class="prompt-btn" data-prompt="Help me debug my code. Explain common debugging steps.">
+                    <span>⌕</span>
+                    Debug my code
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                <span>AI assistant ready</span>
+            </div>
+        </aside>
+
+        <!-- Main workspace -->
+        <main class="main-panel">
+            <header class="topbar">
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Toggle sidebar"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+                <div class="topbar-title">
+                    <span class="online-dot"></span>
+                    Gemini Assistant
+                </div>
+
+                <span class="model-badge">Gemini 2.5 Flash</span>
+            </header>
+
+            <section class="chat-area" id="chatArea">
+                <!-- Welcome screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-symbol">✳</div>
+                    <p class="welcome-eyebrow">YOUR AI WORKSPACE</p>
+                    <h1>
+                        What can I help<br>
+                        <span>you with today?</span>
+                    </h1>
+                    <p class="welcome-description">
+                        Ask questions, explore ideas, learn something new,
+                        or get help with your code.
+                    </p>
+                    <div class="suggestion-grid">
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Explain HTML, CSS and JavaScript with simple examples."
+                        >
+                            <span class="suggestion-icon mint">⌘</span>
+                            <strong>Learn something</strong>
+                            <small>Understand concepts easily</small>
+                        </button>
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Give me a creative full-stack web development project idea."
+                        >
+                            <span class="suggestion-icon peach">✧</span>
+                            <strong>Explore ideas</strong>
+                            <small>Find your next project</small>
+                        </button>
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Write a simple JavaScript program to reverse a string and explain it line by line."
+                        >
+                            <span class="suggestion-icon lavender">{ }</span>
+                            <strong>Write some code</strong>
+                            <small>Build and understand code</small>
+                        </button>
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Give me a step-by-step plan to prepare for a fresher web developer interview."
+                        >
+                            <span class="suggestion-icon yellow">↗</span>
+                            <strong>Career guidance</strong>
+                            <small>Prepare for your next step</small>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Conversation messages are added here -->
+                <div
+                    class="messages"
+                    id="messages"
+                    aria-live="polite"
+                    aria-label="Conversation"
+                ></div>
+
+            </section>
+
+            <!-- Input area -->
+            <footer class="composer-area">
+                <form class="composer" id="questionForm">
+                    <textarea
+                        id="question"
+                        rows="1"
+                        maxlength="10000"
+                        placeholder="Message Gemini..."
+                        aria-label="Ask Gemini a question"
+                        required
+                    ></textarea>
+
+                    <div class="composer-bottom">
+                        <span class="composer-hint">
+                            Enter to send · Shift + Enter for a new line
+                        </span>
+
+                        <button
+                            type="submit"
+                            id="askBtn"
+                            class="send-btn"
+                            aria-label="Send message"
+                        >
+                            <span id="sendIcon">↑</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <p class="disclaimer">
+                    AI can make mistakes. Verify important information.
+                </p>
+
+            </footer>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
